@@ -1,25 +1,22 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import SideBar from './components/sideBar'
+import Dashboard from './components/Dashboard'
+import Projects from './components/Projects'
+import Tasks from './components/Tasks'
 
 export default function App() {
-  const [count, setCount] = useState(0)
+
+const [activeView, setActiveView] = useState("Dashboard");
 
   return (
-	  <>
-		<h1> This is a title </h1>
-	  </>
+	  <div className="flex">
+		<SideBar activeView={activeView} setActiveView={setActiveView} />
+    <main className="flex-1">
+      {activeView == "Dashboard" && <Dashboard />}
+      {activeView == "Projects" && <Projects />}
+      {activeView == "Tasks" && <Tasks />}
+    </main>
+	  </div>
   )
 }
-
-
-function Profile() {
-  return (
-    <img
-      src="https://i.imgur.com/QIrZWGIs.jpg"
-      alt="Alan L. Hart"
-    />
-  );
-}
-
