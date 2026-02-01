@@ -8,11 +8,10 @@ import Login from './screens/Login'
 
 export default function App() {
 
-const [activeView, setActiveView] = useState("Dashboard");
+const [activeView, setActiveView] = useState("Login");
 const [isLoggedIn, setLoggedInStatus] = useState(false);
 
   return (
-	  
 	  <div className="flex w-full h-screen items-center justify-center">
 
 		  {isLoggedIn ? 
@@ -26,7 +25,7 @@ const [isLoggedIn, setLoggedInStatus] = useState(false);
 				</main>
 			</>
 
-			  : <Login/> 
+			  : <Login setLoggedIn  = {setLoggedInStatus}  setActiveView = {setActiveView}/> 
 		  }
 
 	  </div>

@@ -1,8 +1,20 @@
 import React, {useState} from 'react'
 import { Eye, EyeOff } from 'lucide-react';
 
-export default function Login(){
+interface LoginProps {
+	setLoggedIn : () => void;
+	setActiveView: (view: string) => void;
+}
+
+export default function Login({setLoggedIn, setActiveView}: LoginProps){
 	const [showPassword, setShowPassword] = useState(false);
+
+	const handleLogin = () => {
+		setActiveView("DashBoard")
+		setLoggedIn(true);
+		console.log("After Login")
+	}
+		
 
 	return(
         <div className="flex items-center justify-center min-h-screen">
@@ -45,7 +57,7 @@ export default function Login(){
                   </div>
 
                   {/* Login Button */}
-                  <button className="w-full py-2 font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
+                  <button className="w-full py-2 font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors" onClick = {handleLogin}>
                     Login
                   </button>
                 </form>
